@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "path": "flask-jwt-auth",
+      "name": "Backend"
+    },
+    {
+      "path": "react-jwt",
+      "name": "Frontend"
+    }
+  ],
+  "settings": {
+    "editor.formatOnSave": true,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "eslint.workingDirectories": [
+      "./react-jwt"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "msjsdiag.debugger-for-chrome"
+    ]
+  }
+}

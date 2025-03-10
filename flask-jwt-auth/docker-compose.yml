@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+      - ./instance:/app/instance  # instanceディレクトリをマウント
+    environment:
+      - FLASK_APP=src/app.py
+      - FLASK_ENV=development
+      - PYTHONPATH=/app  # Pythonパスを設定
+    command: >
+      sh -c "mkdir -p /app/instance &&
+             chmod 777 /app/instance &&
+             python3 -m src.app"
+
+volumes:
+  db_data:
