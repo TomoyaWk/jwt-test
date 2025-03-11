@@ -6,6 +6,7 @@ from flask_jwt_extended import (
 from flask import jsonify, current_app
 from datetime import datetime, timezone, timedelta
 from functools import wraps
+from config import JWT_ACCESS_TOKEN_EXPIRES
 
 def generate_tokens(user_id):
     """
@@ -21,7 +22,7 @@ def generate_tokens(user_id):
     access_token = create_access_token(
         identity=user_id,
         fresh=True,
-        expires_delta=timedelta(minutes=15)  # 短い有効期限
+        expires_delta=timedelta(seconds==JWT_ACCESS_TOKEN_EXPIRES) # 1時間有効
     )
     
     # リフレッシュトークンはより長い有効期限を持つ
