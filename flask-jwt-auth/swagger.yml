@@ -1,0 +1,21 @@
+swagger: '2.0'
+info:
+  title: 'Flask JWT Auth API'
+  description: 'JWT認証を使用したFlask APIの仕様書'
+  version: '1.0.0'
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+    description: 'JWTトークンを使用して認証します。例：Bearer <token>'
+tags:
+  - name: 認証
+    description: 認証関連のエンドポイント
+  - name: ユーザー管理
+    description: ユーザー情報を管理するエンドポイント
+  - name: 保護されたリソース
+    description: JWT認証が必要なリソース
+  - name: 管理者機能
+    description: 管理者専用機能
+paths: {}

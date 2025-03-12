@@ -1,8 +1,8 @@
 import os
 from flask import Flask
 from flask_jwt_extended import JWTManager
-from src.models import db  # 相対インポートから絶対インポートに変更
-from src.config import Config  # 同様に修正
+from src.models import db
+from src.config import Config
 
 def create_app(config_name=None):
     app = Flask(__name__)
@@ -25,8 +25,8 @@ def create_app(config_name=None):
     db.init_app(app)
     jwt = JWTManager(app)
     
-    from src.routes.auth import auth_bp  # 絶対インポートに変更
-    from src.routes.users import users_bp  # 絶対インポートに変更
+    from src.routes.auth import auth_bp
+    from src.routes.users import users_bp
     
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(users_bp, url_prefix='/users')

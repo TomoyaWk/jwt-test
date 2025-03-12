@@ -3,13 +3,16 @@ from flask_jwt_extended import (
     jwt_required, get_jwt_identity, get_jwt,
     create_access_token
 )
-from src.models.user import User  # モジュールパスを修正
-from src.utils.jwt_utils import verify_jwt, generate_tokens  # モジュールパスを修正
+from src.models.user import User
+from src.utils.jwt_utils import verify_jwt, generate_tokens
 
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/register', methods=['POST'])
 def register():
+    """
+    ユーザー登録エンドポイント
+    """
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -27,6 +30,9 @@ def register():
 
 @auth_bp.route('/login', methods=['POST'])
 def login():
+    """
+    ユーザーログインエンドポイント
+    """
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
@@ -53,7 +59,7 @@ def login():
     }), 200
 
 @auth_bp.route('/refresh', methods=['POST'])
-@jwt_required(refresh=True)  # リフレッシュトークンが必要
+@jwt_required(refresh=True)
 def refresh():
     """
     リフレッシュトークンを使用して新しいアクセストークンを生成する
