@@ -4,7 +4,7 @@ services:
   web:
     build: .
     ports:
-      - "5000:5000"
+      - "5100:5000"
     volumes:
       - .:/app
       - ./instance:/app/instance  # instanceディレクトリをマウント
