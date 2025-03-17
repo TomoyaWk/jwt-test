@@ -15,6 +15,7 @@ def get_users():
     return jsonify([{
         'id': user.id,
         'username': user.username,
+        'created_at': user.created_at if hasattr(user, 'created_at') else None,
     } for user in users]), 200
 
 @users_bp.route('/<int:user_id>', methods=['GET'])
@@ -29,6 +30,8 @@ def get_user(user_id):
     return jsonify({
         'id': user.id,
         'username': user.username,
+        'created_at': user.created_at if hasattr(user, 'created_at') else None,
+        'updated_at': user.updated_at if hasattr(user, 'updated_at') else None
     }), 200
 
 @users_bp.route('/me', methods=['GET'])

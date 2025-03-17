@@ -1,11 +1,15 @@
 import os
 from flask import Flask
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
 from src.models import db
 from src.config import Config
 
 def create_app(config_name=None):
     app = Flask(__name__)
+    
+    # CORSの設定を追加
+    CORS(app, resources={r"/*": {"origins": "*"}})
     
     # データベースディレクトリを確保
     if config_name == 'testing':

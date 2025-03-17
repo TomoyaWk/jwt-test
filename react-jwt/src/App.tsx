@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Top from "./components/Top";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="min-h-screen flex flex-col items-center justify-center p-4">
+        <div className="mb-4 flex gap-4">
+          <Link to="/" className="text-blue-500 hover:text-blue-700">
+            Login
+          </Link>
+          <Link to="/register" className="text-blue-500 hover:text-blue-700">
+            Register
+          </Link>
+        </div>
+
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/top" element={<Top />} />
+          <Route
+            path="*"
+            element={
+              <div className="text-center">
+                <h1 className="text-2xl font-bold mb-4">
+                  404 - Page Not Found
+                </h1>
+                <p className="mb-4">お探しのページは見つかりませんでした。</p>
+                <Link to="/" className="text-blue-500 hover:text-blue-700">
+                  ログインに戻る
+                </Link>
+              </div>
+            }
+          />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
